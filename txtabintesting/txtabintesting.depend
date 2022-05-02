@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1651006381 source:d:\facultad\programacioncursada2\txtabintesting\main.c
+	<stdio.h>
+	<stdlib.h>
+	"empleadostruct.h"
+
+1651006151 d:\facultad\programacioncursada2\txtabintesting\empleadostruct.h
+

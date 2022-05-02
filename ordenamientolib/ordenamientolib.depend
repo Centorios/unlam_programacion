@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1651153125 source:d:\facultad\programacioncursada2\ordenamientolib\main.c
+	<stdlib.h>
+	<string.h>
+	"./ordenamiento.h"
+
+1651153151 d:\facultad\programacioncursada2\ordenamientolib\ordenamiento.h
+	<stdio.h>
+

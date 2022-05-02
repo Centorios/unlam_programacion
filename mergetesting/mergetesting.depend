@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1650549082 source:e:\facultad\programacioncursada2\mergetesting\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"auxiliares.h"
+
+1650549115 source:e:\facultad\programacioncursada2\mergetesting\auxiliares.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"auxiliares.h"
+
+1650549047 e:\facultad\programacioncursada2\mergetesting\auxiliares.h
+
+1650549116 source:d:\facultad\programacioncursada2\mergetesting\auxiliares.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"auxiliares.h"
+
+1650549048 d:\facultad\programacioncursada2\mergetesting\auxiliares.h
+
+1650549084 source:d:\facultad\programacioncursada2\mergetesting\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"auxiliares.h"
+

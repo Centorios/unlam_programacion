@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1650301884 source:e:\facultad\programacioncursada2\strinlibtesting\main.c
+	<stdio.h>
+	<stdlib.h>
+	"../stringlib/stringlib.h"
+
+1649776065 e:\facultad\programacioncursada2\stringlib\stringlib.h
+

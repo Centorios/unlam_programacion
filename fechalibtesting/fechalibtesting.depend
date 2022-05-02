@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1649114640 source:e:\facultad\programacioncursada2\fechalibtesting\main.c
+	<stdio.h>
+	<stdlib.h>
+	"../fechaslib/fechastruct.h"
+
+1649114461 e:\facultad\programacioncursada2\fechaslib\fechastruct.h
+

@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1651156103 source:d:\facultad\programacioncursada2\burbujeotesting\main.c
+	<stdio.h>
+	<stdlib.h>
+	"../ordenamientolib/ordenamiento.h"
+
+1651153151 d:\facultad\programacioncursada2\ordenamientolib\ordenamiento.h
+	<stdio.h>
+

@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1649339866 source:e:\facultad\programacioncursada2\vectorlib\vector.c
+	<stdio.h>
+	"vector.h"
+
+1649340071 e:\facultad\programacioncursada2\vectorlib\vector.h
+

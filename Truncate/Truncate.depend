@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1648514760 source:e:\facultad\programacion (cursada2)\truncate\main.c
+	<stdio.h>
+	<stdlib.h>
+	"truncate.h"
+
+1648514104 e:\facultad\programacion (cursada2)\truncate\truncate.h
+
+1648514685 source:e:\facultad\programacion (cursada2)\truncate\truncate.c
+	<stdio.h>
+	<math.h>
+

@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1650339190 source:e:\facultad\programacioncursada2\empladolibtesitng\main.c
+	<stdio.h>
+	<stdlib.h>
+	"../../Programacioncursada2/empleadolib/empleadolib.h"
+
+1650338833 e:\facultad\programacioncursada2\empleadolib\empleadolib.h
+	"E:\Facultad\Programacioncursada2\fechaslib\fechastruct.h"
+
+1649114461 e:\facultad\programacioncursada2\fechaslib\fechastruct.h
+

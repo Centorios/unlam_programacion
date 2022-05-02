@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1649516633 source:e:\facultad\programacioncursada2\fechasobjtesting\main.cpp
+	<iostream>
+	"../fechalibOBJ/fecha.h"
+
+1649516575 e:\facultad\programacioncursada2\fechalibobj\fecha.h
+

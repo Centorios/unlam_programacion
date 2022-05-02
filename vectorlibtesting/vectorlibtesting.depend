@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1649600020 source:e:\facultad\programacioncursada2\vectorlibtesting\main.c
+	<stdio.h>
+	<stdlib.h>
+	"../vectorlib/vector.h"
+
+1649599438 e:\facultad\programacioncursada2\vectorlib\vector.h
+
