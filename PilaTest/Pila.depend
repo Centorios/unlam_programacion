@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1651762860 source:d:\facultad\programacioncursada2\pila\main.c
+	<stdio.h>
+	<stdlib.h>
+	"../pila.h"
+
+1651761343 d:\facultad\programacioncursada2\pila.h
+	<stdio.h>
+	<mem.h>
+
