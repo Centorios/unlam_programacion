@@ -26,6 +26,14 @@ NodoA *crearNodo(void *dato, size_t tamElem)
     return nai;
 }
 
+
+void destruirNodo(NodoA* nae, void* dato, size_t tamElem)
+{
+    memcpy(dato,nae->elem,tamElem);
+    free(nae->elem);
+    free(nae);
+}
+
 int insertarEnArbolRecursivo(Arbol *pa, void *dato, size_t tamElem, Cmp cmp, Actualizar actualizar)
 {
     if (!*pa)

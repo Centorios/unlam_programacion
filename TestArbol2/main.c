@@ -11,6 +11,16 @@ int comparaInt(const void* a, const void* b)
 }
 
 
+void imprimirEnteroArbol(void* elem,const void* dato,int nivel)
+{
+    int i;
+    for(i = 0; i < nivel;i++)
+    {
+        putchar('\t');
+    }
+    printf("%d\n",*(int*)elem);
+}
+
 
 int main()
 {
@@ -18,30 +28,15 @@ int main()
     crearArbol(&arbol);
     int arr [] = {70,80,90,85,50,60,40};
     insertarEnArbolRecursivo(&arbol,&arr[0],sizeof(int),&comparaInt,NULL);
+    insertarEnArbolRecursivo(&arbol,&arr[3],sizeof(int),&comparaInt,NULL);
     insertarEnArbolRecursivo(&arbol,&arr[1],sizeof(int),&comparaInt,NULL);
     insertarEnArbolRecursivo(&arbol,&arr[2],sizeof(int),&comparaInt,NULL);
-    insertarEnArbolRecursivo(&arbol,&arr[3],sizeof(int),&comparaInt,NULL);
+    insertarEnArbolRecursivo(&arbol,&arr[6],sizeof(int),&comparaInt,NULL);
     insertarEnArbolRecursivo(&arbol,&arr[4],sizeof(int),&comparaInt,NULL);
     insertarEnArbolRecursivo(&arbol,&arr[5],sizeof(int),&comparaInt,NULL);
-    insertarEnArbolRecursivo(&arbol,&arr[6],sizeof(int),&comparaInt,NULL);
-    int dato;
-    if(buscarNodo(&arbol,&arr[6],sizeof(int),&comparaInt,&dato))
-    {
-        printf("%d",(int)dato);
-    }
-    else
-    {
-        puts("no se encontro el elemento");
-    }
 
-    int falopa = 120;
-    if(buscarNodo(&arbol,&falopa,sizeof(int),&comparaInt,&dato))
-    {
-        printf("%d",(int)dato);
-    }
-    else
-    {
-        puts("no se encontro el elemento");
-    }
+    imprimirArbol(&arbol,imprimirEnteroArbol,NULL,0);
+
     return 0;
 }
+

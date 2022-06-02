@@ -10,7 +10,7 @@
 typedef int (*Cmp)(const void *, const void *);
 typedef int (*Accion)(void *elem, void *datosAccion);
 typedef int(*Actualizar)(void* elem,const void* dato);
-typedef int(*Imprimir)(void* elem,const void* dato,int nivel);
+typedef void(*Imprimir)(void* elem,const void* dato,int nivel);
 typedef struct sNodo
 {
     void *elem;
