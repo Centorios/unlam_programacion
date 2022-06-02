@@ -1,6 +1,7 @@
 #include "./TDAPilaDinamica.h"
-#include <mem.h>
-#define min(a,b) (a>b? a:b);
+#define min(a,b) (a>b? a:b)
+
+
 void crearPila(Pila* pp)
 {
     *pp = NULL;
@@ -9,7 +10,7 @@ void crearPila(Pila* pp)
 
 int apilar(Pila* pp,const void* elem, size_t tamElem)
 {
-    Nodo* nuevo = (Nodo*)malloc(sizeof(Nodo));
+    Nodo* nue = (Nodo*)malloc(sizeof(Nodo));
     void* elemNodo = malloc(tamElem);
 
     if(!nue || !elemNodo)
@@ -67,14 +68,14 @@ int pilaLlena(const Pila* pp,size_t tamElem)
 
 void vaciarPila(Pila* pp)
 {
-    Nodo* nae = *pp
+    Nodo* nae = *pp;
 
     while(nae)
     {
         *pp = nae->sig;
         free(nae->elem);
         free(nae);
-        nae = *pp
+        nae = *pp;
     }
 
 }

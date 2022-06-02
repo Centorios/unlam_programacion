@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1653933527 source:d:\facultad\programacioncursada2\tdalistasimpledinamica\main.c
+	<stdio.h>
+	<stdlib.h>
+	<mem.h>
+	"./lista.h"
+
+1653933849 d:\facultad\programacioncursada2\tdalistasimpledinamica\lista.h
+

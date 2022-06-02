@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1653568293 source:d:\facultad\programacioncursada2\tdalistadobledinamica\main.c
+	"./listadoble.h"
+
+1653568369 d:\facultad\programacioncursada2\tdalistadobledinamica\listadoble.h
+	<stdlib.h>
+	<mem.h>
+
