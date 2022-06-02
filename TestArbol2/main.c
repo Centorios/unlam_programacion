@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../TDAArbolBinario/arbol.h"
+#include "../TDAArbolImplDinamica/arbol.h"
 
 int comparaInt(const void* a, const void* b)
 {
@@ -17,13 +17,13 @@ int main()
     Arbol arbol;
     crearArbol(&arbol);
     int arr [] = {70,80,90,85,50,60,40};
-    insertarEnArbol(&arbol,&arr[0],sizeof(int),&comparaInt);
-    insertarEnArbol(&arbol,&arr[1],sizeof(int),&comparaInt);
-    insertarEnArbol(&arbol,&arr[2],sizeof(int),&comparaInt);
-    insertarEnArbol(&arbol,&arr[3],sizeof(int),&comparaInt);
-    insertarEnArbol(&arbol,&arr[4],sizeof(int),&comparaInt);
-    insertarEnArbol(&arbol,&arr[5],sizeof(int),&comparaInt);
-    insertarEnArbol(&arbol,&arr[6],sizeof(int),&comparaInt);
+    insertarEnArbolRecursivo(&arbol,&arr[0],sizeof(int),&comparaInt,NULL);
+    insertarEnArbolRecursivo(&arbol,&arr[1],sizeof(int),&comparaInt,NULL);
+    insertarEnArbolRecursivo(&arbol,&arr[2],sizeof(int),&comparaInt,NULL);
+    insertarEnArbolRecursivo(&arbol,&arr[3],sizeof(int),&comparaInt,NULL);
+    insertarEnArbolRecursivo(&arbol,&arr[4],sizeof(int),&comparaInt,NULL);
+    insertarEnArbolRecursivo(&arbol,&arr[5],sizeof(int),&comparaInt,NULL);
+    insertarEnArbolRecursivo(&arbol,&arr[6],sizeof(int),&comparaInt,NULL);
     int dato;
     if(buscarNodo(&arbol,&arr[6],sizeof(int),&comparaInt,&dato))
     {

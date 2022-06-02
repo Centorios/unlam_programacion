@@ -1,8 +1,0 @@
-# depslib dependency file v1.0
-1653921037 source:c:\users\vm\documents\tdaarbolbinario\main.c
-	<stdlib.h>
-	<mem.h>
-	"./arbol.h"
-
-1653920898 c:\users\vm\documents\tdaarbolbinario\arbol.h
-

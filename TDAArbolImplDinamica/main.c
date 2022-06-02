@@ -26,7 +26,7 @@ NodoA *crearNodo(void *dato, size_t tamElem)
     return nai;
 }
 
-int insertarEnArbolRecursivo(Arbol *pa, const void *dato, size_t tamElem, Cmp cmp, Actualizar actualizar)
+int insertarEnArbolRecursivo(Arbol *pa, void *dato, size_t tamElem, Cmp cmp, Actualizar actualizar)
 {
     if (!*pa)
     {
@@ -50,10 +50,10 @@ int insertarEnArbolRecursivo(Arbol *pa, const void *dato, size_t tamElem, Cmp cm
         return DUPLICADO;
     }
 
-    return insertarEnArbolRecursivo(auxCmp < 0 ? &(*pa)->izq : &(*pa)->der, dato, tamElem, cmp, actualizar);
+    return insertarEnArbolRecursivo(auxCmp > 0 ? &(*pa)->izq : &(*pa)->der, dato, tamElem, cmp, actualizar);
 }
 
-int insertarEnArbolIterativo(Arbol *pa, const void *dato, size_t tamElem, Cmp cmp, Actualizar actualizar)
+int insertarEnArbolIterativo(Arbol *pa, void *dato, size_t tamElem, Cmp cmp, Actualizar actualizar)
 {
     int comp;
 
@@ -68,7 +68,7 @@ int insertarEnArbolIterativo(Arbol *pa, const void *dato, size_t tamElem, Cmp cm
             return DUPLICADO;
         }
 
-        if (comp < 0)
+        if (comp > 0)
             pa = &(*pa)->izq;
         else
             pa = &(*pa)->der;

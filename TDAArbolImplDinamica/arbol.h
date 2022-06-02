@@ -1,6 +1,7 @@
 #ifndef ARBOL_H_INCLUDED
 #define ARBOL_H_INCLUDED
 
+
 #define VERDADERO 1
 #define FALSO 0
 #define SIN_MEM 2
@@ -30,8 +31,8 @@ typedef enum
 
 void crearArbol(Arbol *pa);
 NodoA *crearNodo(void *dato, size_t tamElem);
-int insertarEnArbolRecursivo(Arbol *pa, const void *dato, size_t tamElem, Cmp cmp,Actualizar actualizar);
-int insertarEnArbolIterativo(Arbol *pa, const void *dato, size_t tamElem, Cmp cmp, Actualizar actualizar);
+int insertarEnArbolRecursivo(Arbol *pa, void *dato, size_t tamElem, Cmp cmp,Actualizar actualizar);
+int insertarEnArbolIterativo(Arbol *pa, void *dato, size_t tamElem, Cmp cmp, Actualizar actualizar);
 int buscarNodo(Arbol *pa, void *dato, size_t tamElem, Cmp cmp, void *dst);
 int arbolVacio(Arbol *pa);
 void recorrerArbolPreOrden(Arbol *pa, Accion accion, void *datosAccion);
