@@ -7,6 +7,9 @@
 #define SIN_MEM 2
 #define DUPLICADO 3
 
+#define min(a,b) (a < b ? (a) : (b))
+#define max(a,b) (a > b ? (a) : (b))
+
 typedef int (*Cmp)(const void *, const void *);
 typedef int (*Accion)(void *elem, void *datosAccion);
 typedef int(*Actualizar)(void* elem,const void* dato);
@@ -46,4 +49,7 @@ TipoArbol tipoArbol(const Arbol *pa);
 void imprimirArbolRecursiva(Arbol *pa, Imprimir accion, void *datosAccion, int nivel);
 void imprimirArbol(Arbol *pa, Imprimir accion, void *datosAccion, int nivel);
 
+Arbol* buscarRaizArbol(const Arbol* pa,const void* elem,size_t tamElem,Cmp cmp);
+int eliminarDeArbol(Arbol* pa,void* elem,size_t tamElem,Cmp cmp);
+void eliminarRaizArbol(Arbol* pae);
 #endif // ARBOL_H_INCLUDED

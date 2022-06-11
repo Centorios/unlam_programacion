@@ -27,14 +27,14 @@ int main()
     Arbol arbol;
     crearArbol(&arbol);
     int arr [] = {70,80,90,85,50,60,40};
-    insertarEnArbolRecursivo(&arbol,&arr[0],sizeof(int),&comparaInt,NULL);
-    insertarEnArbolRecursivo(&arbol,&arr[3],sizeof(int),&comparaInt,NULL);
-    insertarEnArbolRecursivo(&arbol,&arr[1],sizeof(int),&comparaInt,NULL);
-    insertarEnArbolRecursivo(&arbol,&arr[2],sizeof(int),&comparaInt,NULL);
-    insertarEnArbolRecursivo(&arbol,&arr[6],sizeof(int),&comparaInt,NULL);
-    insertarEnArbolRecursivo(&arbol,&arr[4],sizeof(int),&comparaInt,NULL);
-    insertarEnArbolRecursivo(&arbol,&arr[5],sizeof(int),&comparaInt,NULL);
-
+    insertarEnArbolIterativo(&arbol,&arr[0],sizeof(int),&comparaInt,NULL);
+    insertarEnArbolIterativo(&arbol,&arr[3],sizeof(int),&comparaInt,NULL);
+    insertarEnArbolIterativo(&arbol,&arr[1],sizeof(int),&comparaInt,NULL);
+    insertarEnArbolIterativo(&arbol,&arr[2],sizeof(int),&comparaInt,NULL);
+    insertarEnArbolIterativo(&arbol,&arr[6],sizeof(int),&comparaInt,NULL);
+    insertarEnArbolIterativo(&arbol,&arr[4],sizeof(int),&comparaInt,NULL);
+    insertarEnArbolIterativo(&arbol,&arr[5],sizeof(int),&comparaInt,NULL);
+    eliminarDeArbol(&arbol,&arr[4],sizeof(int),&comparaInt);
     imprimirArbol(&arbol,imprimirEnteroArbol,NULL,0);
 
     return 0;

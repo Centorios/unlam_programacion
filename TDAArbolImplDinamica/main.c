@@ -58,7 +58,7 @@ int insertarEnArbolRecursivo(Arbol *pa, void *dato, size_t tamElem, Cmp cmp, Act
         return DUPLICADO;
     }
 
-    return insertarEnArbolRecursivo(auxCmp > 0 ? &(*pa)->izq : &(*pa)->der, dato, tamElem, cmp, actualizar);
+    return insertarEnArbolRecursivo(auxCmp < 0 ? &(*pa)->izq : &(*pa)->der, dato, tamElem, cmp, actualizar);
 }
 
 int insertarEnArbolIterativo(Arbol *pa, void *dato, size_t tamElem, Cmp cmp, Actualizar actualizar)
@@ -76,7 +76,7 @@ int insertarEnArbolIterativo(Arbol *pa, void *dato, size_t tamElem, Cmp cmp, Act
             return DUPLICADO;
         }
 
-        if (comp > 0)
+        if (comp < 0)
             pa = &(*pa)->izq;
         else
             pa = &(*pa)->der;
@@ -174,3 +174,103 @@ void imprimirArbol(Arbol *pa, Imprimir accion, void *datosAccion, int nivel)
 {
     imprimirArbolRecursiva(pa, accion, datosAccion, 0);
 }
+
+
+Arbol* buscarRaizArbol(const Arbol* pa,const void* elem,size_t tamElem,Cmp cmp)
+{
+    if(!*pa)
+    {
+        return NULL;
+    }
+
+    int comp = cmp(elem,(*pa)->elem);
+
+    if(comp == 0)
+    {
+        return pa;
+    }
+
+    return buscarRaizArbol(comp <0? &(*pa)->izq : &(*pa)->der,elem,tamElem,cmp);
+
+}
+
+
+Arbol* mayorDeArbol(Arbol* pa)
+{
+    if(!(*pa)->der)
+    {
+        return pa;
+    }
+
+    pa = &(*pa)->der;
+    return mayorDeArbol(pa);
+}
+
+Arbol* menorDeArbol(Arbol* pa)
+{
+    if(!(*pa)->izq)
+    {
+        return pa;
+    }
+
+    pa = &(*pa)->izq;
+    return menorDeArbol(pa);
+}
+
+
+int alturaArbol(Arbol* pa)
+{
+    if(!*pa)
+    {
+        return 0;
+    }
+    return max(alturaArbol(&(*pa)->izq),alturaArbol(&(*pa)->der)) +1;
+}
+
+
+void eliminarRaizArbol(Arbol* pae)
+{
+    if(!(*pae)->izq && !(*pae)->der)
+    {
+        free(*pae);
+        *pae = NULL;
+        return;
+    }
+
+    int hIzq = alturaArbol(&(*pae)->izq);
+    int hDer = alturaArbol(&(*pae)->der);
+
+    Arbol* par = hIzq > hDer? mayorDeArbol(&(*pae)->izq) : menorDeArbol(&(*pae)->der);
+
+    (*pae)->elem = (*par)->elem;
+    (*pae)->tamElem = (*par)->tamElem;
+
+    eliminarRaizArbol(par);
+
+}
+
+
+int eliminarDeArbol(Arbol* pa,void* elem,size_t tamElem,Cmp cmp)
+{
+    Arbol* pae = buscarRaizArbol(pa,elem,tamElem,cmp);
+
+    if(!pae)
+    {
+        return FALSO;
+    }
+
+    memcpy(elem, (*pae)->elem,min(tamElem,(*pae)->tamElem)); //previamente se copia en elem
+    free((*pae)->elem); //aca se elimina el elemento
+
+
+    eliminarRaizArbol(pae); //elimina el nodo, no el elemento
+
+    return VERDADERO;
+
+}
+
+
+
+
+
+
