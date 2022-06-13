@@ -48,7 +48,7 @@ int esArbolAVL(const Arbol *pa);
 int contarNodoHastaNivel(const Arbol *pa, int nivel);
 TipoArbol tipoArbol(const Arbol *pa);
 void imprimirArbolRecursiva(Arbol *pa, Imprimir accion, void *datosAccion, int nivel);
-void imprimirArbol(Arbol *pa, Imprimir accion, void *datosAccion, int nivel);
+void imprimirArbol(Arbol *pa, Imprimir accion, void *datosAccion);
 
 Arbol* buscarRaizArbol(const Arbol* pa,const void* elem,size_t tamElem,Cmp cmp);
 int eliminarDeArbol(Arbol* pa,void* elem,size_t tamElem,Cmp cmp);

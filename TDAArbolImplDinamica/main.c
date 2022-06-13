@@ -157,12 +157,12 @@ void imprimirArbolRecursiva(Arbol *pa, Imprimir accion, void *datosAccion, int n
     if (!*pa)
         return;
 
-    imprimirArbol(&(*pa)->izq, accion, datosAccion, nivel + 1);
+    imprimirArbolRecursiva(&(*pa)->izq, accion, datosAccion, nivel + 1);
     accion((*pa)->elem, datosAccion, nivel);
-    imprimirArbol(&(*pa)->der, accion, datosAccion, nivel + 1);
+    imprimirArbolRecursiva(&(*pa)->der, accion, datosAccion, nivel + 1);
 }
 
-void imprimirArbol(Arbol *pa, Imprimir accion, void *datosAccion, int nivel)
+void imprimirArbol(Arbol *pa, Imprimir accion, void *datosAccion)
 {
     imprimirArbolRecursiva(pa, accion, datosAccion, 0);
 }
@@ -178,7 +178,7 @@ Arbol *buscarRaizArbol(const Arbol *pa, const void *elem, size_t tamElem, Cmp cm
 
     if (comp == 0)
     {
-        return pa;
+        return (Arbol*)pa;
     }
 
     return buscarRaizArbol(comp < 0 ? &(*pa)->izq : &(*pa)->der, elem, tamElem, cmp);
@@ -271,26 +271,26 @@ int contarNodoHastaNivel(const Arbol *pa, int nivel)
     {
         return 1;
     }
-    return contarNodoHastaNivel(&(*pa)->izq, nivel - 1) + contarNodoHastaNivel(&(*pa)->der, nivel - 1);
+    return contarNodoHastaNivel(&(*pa)->izq, nivel - 1) + contarNodoHastaNivel(&(*pa)->der, nivel - 1)+1;
 }
 
 int esArbolCompleto(const Arbol *pa)
 {
-    int cnc = pow(2, alturaArbol(pa)); // cantidad de nodos calculado
+    int cnc = pow(2, alturaArbol((Arbol*)pa)) -1; // cantidad de nodos calculado
     int cnr = contarNodos(pa);         // cantidad de nodo real
     return cnc == cnr;
 }
 
 int esArbolBalanceado(const Arbol *pa)
 {
-    int h = alturaArbol(pa);
+    int h = alturaArbol((Arbol*)pa);
 
     if(h <= 2)
     {
         return VERDADERO;
     }
     int cantNodosCompletosPenultimoNivel = pow(2, h - 1)-1;
-    int cantNodosReal = contarNodosHastaNivel(pa, h - 2);
+    int cantNodosReal = contarNodoHastaNivel(pa, h - 2);
     return cantNodosCompletosPenultimoNivel == cantNodosReal;
 }
 int esArbolAVL(const Arbol *pa)
@@ -301,14 +301,14 @@ int esArbolAVL(const Arbol *pa)
     }
     int hIzq = alturaArbol(&(*pa)->izq);
     int hDer = alturaArbol(&(*pa)->der);
-    int AlturaHizq = alturaArbol(&(*pa)->izq);
-    int AlturaHder = alturaArbol(&(*pa)->der);
+
+
     if(abs(hIzq - hDer) > 1)
     {
         return FALSO;
     }
     return esArbolAVL(&(*pa)->izq) && esArbolAVL(&(*pa)->der);
-    
+
 }
 
 

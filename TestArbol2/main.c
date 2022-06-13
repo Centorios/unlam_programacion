@@ -31,11 +31,17 @@ int main()
     insertarEnArbolIterativo(&arbol,&arr[3],sizeof(int),&comparaInt,NULL);
     insertarEnArbolIterativo(&arbol,&arr[1],sizeof(int),&comparaInt,NULL);
     insertarEnArbolIterativo(&arbol,&arr[2],sizeof(int),&comparaInt,NULL);
-    insertarEnArbolIterativo(&arbol,&arr[6],sizeof(int),&comparaInt,NULL);
+    //insertarEnArbolIterativo(&arbol,&arr[6],sizeof(int),&comparaInt,NULL);
     insertarEnArbolIterativo(&arbol,&arr[4],sizeof(int),&comparaInt,NULL);
     insertarEnArbolIterativo(&arbol,&arr[5],sizeof(int),&comparaInt,NULL);
-    eliminarDeArbol(&arbol,&arr[4],sizeof(int),&comparaInt);
-    imprimirArbol(&arbol,imprimirEnteroArbol,NULL,0);
+    insertarEnArbolIterativo(&arbol,&arr[6],sizeof(int),&comparaInt,NULL);
+    //eliminarDeArbol(&arbol,&arr[4],sizeof(int),&comparaInt);
+    imprimirArbol(&arbol,imprimirEnteroArbol,NULL);
+    int arbolCompleto = esArbolCompleto(&arbol);
+    int arbolAvl = esArbolAVL(&arbol);
+    int arbolBalanceado = esArbolBalanceado(&arbol);
+
+    printf("Completo:%d , Balanceado:%d, AVL:%d",arbolCompleto,arbolBalanceado,arbolAvl);
 
     return 0;
 }
