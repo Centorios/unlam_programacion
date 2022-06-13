@@ -45,6 +45,7 @@ void vaciarArbol(Arbol *pa);
 int esArbolCompleto(const Arbol *pa);
 int esArbolBalanceado(const Arbol *pa);
 int esArbolAVL(const Arbol *pa);
+int contarNodoHastaNivel(const Arbol *pa, int nivel);
 TipoArbol tipoArbol(const Arbol *pa);
 void imprimirArbolRecursiva(Arbol *pa, Imprimir accion, void *datosAccion, int nivel);
 void imprimirArbol(Arbol *pa, Imprimir accion, void *datosAccion, int nivel);

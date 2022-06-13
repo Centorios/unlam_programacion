@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <mem.h>
+#include <math.h>
 #include "./arbol.h"
 
 void crearArbol(Arbol *pa)
@@ -26,10 +27,9 @@ NodoA *crearNodo(void *dato, size_t tamElem)
     return nai;
 }
 
-
-void destruirNodo(NodoA* nae, void* dato, size_t tamElem)
+void destruirNodo(NodoA *nae, void *dato, size_t tamElem)
 {
-    memcpy(dato,nae->elem,tamElem);
+    memcpy(dato, nae->elem, tamElem);
     free(nae->elem);
     free(nae);
 }
@@ -148,15 +148,7 @@ void recorrerArbolPosOrden(Arbol *pa, Accion accion, void *datosAccion)
 void vaciarArbol(Arbol *pa)
 {
 }
-int esArbolCompleto(const Arbol *pa)
-{
-}
-int esArbolBalanceado(const Arbol *pa)
-{
-}
-int esArbolAVL(const Arbol *pa)
-{
-}
+
 TipoArbol tipoArbol(const Arbol *pa)
 {
 }
@@ -175,29 +167,26 @@ void imprimirArbol(Arbol *pa, Imprimir accion, void *datosAccion, int nivel)
     imprimirArbolRecursiva(pa, accion, datosAccion, 0);
 }
 
-
-Arbol* buscarRaizArbol(const Arbol* pa,const void* elem,size_t tamElem,Cmp cmp)
+Arbol *buscarRaizArbol(const Arbol *pa, const void *elem, size_t tamElem, Cmp cmp)
 {
-    if(!*pa)
+    if (!*pa)
     {
         return NULL;
     }
 
-    int comp = cmp(elem,(*pa)->elem);
+    int comp = cmp(elem, (*pa)->elem);
 
-    if(comp == 0)
+    if (comp == 0)
     {
         return pa;
     }
 
-    return buscarRaizArbol(comp <0? &(*pa)->izq : &(*pa)->der,elem,tamElem,cmp);
-
+    return buscarRaizArbol(comp < 0 ? &(*pa)->izq : &(*pa)->der, elem, tamElem, cmp);
 }
 
-
-Arbol* mayorDeArbol(Arbol* pa)
+Arbol *mayorDeArbol(Arbol *pa)
 {
-    if(!(*pa)->der)
+    if (!(*pa)->der)
     {
         return pa;
     }
@@ -206,9 +195,9 @@ Arbol* mayorDeArbol(Arbol* pa)
     return mayorDeArbol(pa);
 }
 
-Arbol* menorDeArbol(Arbol* pa)
+Arbol *menorDeArbol(Arbol *pa)
 {
-    if(!(*pa)->izq)
+    if (!(*pa)->izq)
     {
         return pa;
     }
@@ -217,20 +206,18 @@ Arbol* menorDeArbol(Arbol* pa)
     return menorDeArbol(pa);
 }
 
-
-int alturaArbol(Arbol* pa)
+int alturaArbol(Arbol *pa)
 {
-    if(!*pa)
+    if (!*pa)
     {
         return 0;
     }
-    return max(alturaArbol(&(*pa)->izq),alturaArbol(&(*pa)->der)) +1;
+    return max(alturaArbol(&(*pa)->izq), alturaArbol(&(*pa)->der)) + 1;
 }
 
-
-void eliminarRaizArbol(Arbol* pae)
+void eliminarRaizArbol(Arbol *pae)
 {
-    if(!(*pae)->izq && !(*pae)->der)
+    if (!(*pae)->izq && !(*pae)->der)
     {
         free(*pae);
         *pae = NULL;
@@ -240,37 +227,88 @@ void eliminarRaizArbol(Arbol* pae)
     int hIzq = alturaArbol(&(*pae)->izq);
     int hDer = alturaArbol(&(*pae)->der);
 
-    Arbol* par = hIzq > hDer? mayorDeArbol(&(*pae)->izq) : menorDeArbol(&(*pae)->der);
+    Arbol *par = hIzq > hDer ? mayorDeArbol(&(*pae)->izq) : menorDeArbol(&(*pae)->der);
 
     (*pae)->elem = (*par)->elem;
     (*pae)->tamElem = (*par)->tamElem;
 
     eliminarRaizArbol(par);
-
 }
 
-
-int eliminarDeArbol(Arbol* pa,void* elem,size_t tamElem,Cmp cmp)
+int eliminarDeArbol(Arbol *pa, void *elem, size_t tamElem, Cmp cmp)
 {
-    Arbol* pae = buscarRaizArbol(pa,elem,tamElem,cmp);
+    Arbol *pae = buscarRaizArbol(pa, elem, tamElem, cmp);
 
-    if(!pae)
+    if (!pae)
     {
         return FALSO;
     }
 
-    memcpy(elem, (*pae)->elem,min(tamElem,(*pae)->tamElem)); //previamente se copia en elem
-    free((*pae)->elem); //aca se elimina el elemento
+    memcpy(elem, (*pae)->elem, min(tamElem, (*pae)->tamElem)); // previamente se copia en elem
+    free((*pae)->elem);                                        // aca se elimina el elemento
 
-
-    eliminarRaizArbol(pae); //elimina el nodo, no el elemento
+    eliminarRaizArbol(pae); // elimina el nodo, no el elemento
 
     return VERDADERO;
-
 }
 
+int contarNodos(const Arbol *pa)
+{
+    if (!*pa)
+    {
+        return 0;
+    }
+    return contarNodos(&(*pa)->izq) + contarNodos(&(*pa)->der) + 1;
+}
 
+int contarNodoHastaNivel(const Arbol *pa, int nivel)
+{
+    if (!*pa)
+    {
+        return 0;
+    }
+    if (nivel == 0)
+    {
+        return 1;
+    }
+    return contarNodoHastaNivel(&(*pa)->izq, nivel - 1) + contarNodoHastaNivel(&(*pa)->der, nivel - 1);
+}
 
+int esArbolCompleto(const Arbol *pa)
+{
+    int cnc = pow(2, alturaArbol(pa)); // cantidad de nodos calculado
+    int cnr = contarNodos(pa);         // cantidad de nodo real
+    return cnc == cnr;
+}
 
+int esArbolBalanceado(const Arbol *pa)
+{
+    int h = alturaArbol(pa);
+
+    if(h <= 2)
+    {
+        return VERDADERO;
+    }
+    int cantNodosCompletosPenultimoNivel = pow(2, h - 1)-1;
+    int cantNodosReal = contarNodosHastaNivel(pa, h - 2);
+    return cantNodosCompletosPenultimoNivel == cantNodosReal;
+}
+int esArbolAVL(const Arbol *pa)
+{
+    if (!*pa)
+    {
+        return VERDADERO;
+    }
+    int hIzq = alturaArbol(&(*pa)->izq);
+    int hDer = alturaArbol(&(*pa)->der);
+    int AlturaHizq = alturaArbol(&(*pa)->izq);
+    int AlturaHder = alturaArbol(&(*pa)->der);
+    if(abs(hIzq - hDer) > 1)
+    {
+        return FALSO;
+    }
+    return esArbolAVL(&(*pa)->izq) && esArbolAVL(&(*pa)->der);
+    
+}
 
 
