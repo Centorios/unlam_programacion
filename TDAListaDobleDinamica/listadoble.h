@@ -53,11 +53,11 @@ int eliminarDeListaDesordenada(Lista* pl, void* elem,size_t tamElem,Cmp cmp);
 int buscarEnListaOrdenada(const Lista* pl, void* elem,size_t tamElem,Cmp cmp);
 
 int listaVacia(Lista* pl);
-int listaLlena(Lista* pl);
+int listaLlena(Lista* pl,size_t tamElem);
 void VacialLista(Lista* pl);
 
 void ordenarLista(Lista* pl, Cmp cmp);
-void recorrerLista(Lista* pl, Accion accion,void* datosAccion);
+void recorrerListaAccion(Lista* pl, Accion accion,void* datosAccion);
 
 int eliminarDeListaOrdDuplicados(Lista* pl, const void* elem,size_t tamElem);
 int eliminarDeListaDesordDuplicados(Lista* pl, const void* elem,size_t tamElem);
