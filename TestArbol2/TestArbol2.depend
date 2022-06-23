@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1655987094 source:c:\users\centorios\documents\github\programacionunlam\testarbol2\main.c
+1655987144 source:c:\users\centorios\documents\github\programacionunlam\testarbol2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"../TDAArbolImplDinamica/arbol.h"

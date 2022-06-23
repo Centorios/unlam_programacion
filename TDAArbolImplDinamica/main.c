@@ -58,7 +58,7 @@ int insertarEnArbolRecursivo(Arbol *pa, void *dato, size_t tamElem, Cmp cmp, Act
         return DUPLICADO;
     }
 
-    return insertarEnArbolRecursivo(auxCmp < 0 ? &(*pa)->izq : &(*pa)->der, dato, tamElem, cmp, actualizar);
+    return insertarEnArbolRecursivo(auxCmp < 0 ? &(*pa)->der : &(*pa)->izq, dato, tamElem, cmp, actualizar);
 }
 
 int insertarEnArbolIterativo(Arbol *pa, void *dato, size_t tamElem, Cmp cmp, Actualizar actualizar)
