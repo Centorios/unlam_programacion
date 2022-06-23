@@ -157,9 +157,9 @@ void imprimirArbolRecursiva(Arbol *pa, Imprimir accion, void *datosAccion, int n
     if (!*pa)
         return;
 
-    imprimirArbolRecursiva(&(*pa)->izq, accion, datosAccion, nivel + 1);
-    accion((*pa)->elem, datosAccion, nivel);
     imprimirArbolRecursiva(&(*pa)->der, accion, datosAccion, nivel + 1);
+    accion((*pa)->elem, datosAccion, nivel);
+    imprimirArbolRecursiva(&(*pa)->izq, accion, datosAccion, nivel + 1);
 }
 
 void imprimirArbol(Arbol *pa, Imprimir accion, void *datosAccion)
