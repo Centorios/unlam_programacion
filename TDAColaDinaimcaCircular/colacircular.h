@@ -5,6 +5,8 @@
 #define FALSO 0
 #define VERDADERO 1
 
+#define min(a,b) ((a) > (b) ? (a) : (b))
+
 
 typedef void(*Accion)(void* elem, size_t tamElem, void* datosAccion);
 
@@ -14,7 +16,7 @@ typedef struct sNodo
 {
     void* elem;
     size_t tamElem;
-    struct sNodo* siguiente;  //si tira error aca falta el struct adelante de snodo*
+    struct sNodo* sig;  //si tira error aca falta el struct adelante de snodo*
 
 } Nodo;
 
