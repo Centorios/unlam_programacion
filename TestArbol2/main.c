@@ -38,11 +38,13 @@ int main()
     insertarEnArbolRecursivo(&arbol,&arr[7],sizeof(int),&comparaInt,NULL);
     //eliminarDeArbol(&arbol,&arr[4],sizeof(int),&comparaInt);
     imprimirArbol(&arbol,imprimirEnteroArbol,NULL);
-    int arbolCompleto = esArbolCompleto(&arbol);
-    int arbolAvl = esArbolAVL(&arbol);
-    int arbolBalanceado = esArbolBalanceado(&arbol);
+    vaciarArbol(&arbol);
+    imprimirArbol(&arbol,imprimirArbol,NULL);
+    //int arbolCompleto = esArbolCompleto(&arbol);
+    //int arbolAvl = esArbolAVL(&arbol);
+    //int arbolBalanceado = esArbolBalanceado(&arbol);
 
-    printf("Completo:%d , Balanceado:%d, AVL:%d",arbolCompleto,arbolBalanceado,arbolAvl);
+    //printf("Completo:%d , Balanceado:%d, AVL:%d",arbolCompleto,arbolBalanceado,arbolAvl);
 
     return 0;
 }
