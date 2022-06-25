@@ -1,7 +1,14 @@
 #include <stdlib.h>
 #include <mem.h>
+#include <stdio.h>
 #include <math.h>
 #include "./arbol.h"
+
+
+
+int insertarArchivoEnArbol(Arbol* arbol,FILE* archivo,size_t tamElem,Cmp cmp);
+void cargarArbolArchivo(Arbol* arbol,FILE* archivo,size_t tamElem,Cmp cmp,int li,int ls);
+int insertarEnArbolArchivo(Arbol* arbol,const void* elem,size_t tamElem,Cmp cmp);
 
 void crearArbol(Arbol *pa)
 {
@@ -114,6 +121,9 @@ int buscarNodo(Arbol *pa, void *dato, size_t tamElem, Cmp cmp, void *dst)
 
 int arbolVacio(Arbol *pa)
 {
+    if(!*pa)
+        return VERDADERO;
+    return FALSO;
 }
 
 void recorrerArbolPreOrden(Arbol *pa, Accion accion, void *datosAccion)
@@ -147,11 +157,31 @@ void recorrerArbolPosOrden(Arbol *pa, Accion accion, void *datosAccion)
 }
 void vaciarArbol(Arbol *pa)
 {
+    if(!*pa)
+        return;
+
+    vaciarArbol(&(*pa)->izq);
+    vaciarArbol(&(*pa)->der);
+
+    free((*pa)->elem);
+    free(*pa);
+
+    *pa=NULL; //esto es en el padre
+
 }
 
 TipoArbol tipoArbol(const Arbol *pa)
 {
+    if(esArbolCompleto(pa))
+        return COMPLETO;
+    else if(esArbolBalanceado(pa))
+        return BALANCEADO;
+    else if(esArbolAVL(pa))
+        return AVL;
+
+    return DESBALANCEADO;
 }
+
 void imprimirArbolRecursiva(Arbol *pa, Imprimir accion, void *datosAccion, int nivel)
 {
     if (!*pa)
@@ -181,7 +211,7 @@ Arbol *buscarRaizArbol(const Arbol *pa, const void *elem, size_t tamElem, Cmp cm
         return (Arbol*)pa;
     }
 
-    return buscarRaizArbol(comp < 0 ? &(*pa)->izq : &(*pa)->der, elem, tamElem, cmp);
+    return buscarRaizArbol(comp < 0 ? &(*pa)->der : &(*pa)->izq, elem, tamElem, cmp);
 }
 
 Arbol *mayorDeArbol(Arbol *pa)
@@ -224,10 +254,10 @@ void eliminarRaizArbol(Arbol *pae)
         return;
     }
 
-    int hIzq = alturaArbol(&(*pae)->izq);
-    int hDer = alturaArbol(&(*pae)->der);
+    int izq = alturaArbol(&(*pae)->izq);
+    int der = alturaArbol(&(*pae)->der);
 
-    Arbol *par = hIzq > hDer ? mayorDeArbol(&(*pae)->izq) : menorDeArbol(&(*pae)->der);
+    Arbol *par = izq > der ? mayorDeArbol(&(*pae)->izq) : menorDeArbol(&(*pae)->der);
 
     (*pae)->elem = (*par)->elem;
     (*pae)->tamElem = (*par)->tamElem;
@@ -299,16 +329,99 @@ int esArbolAVL(const Arbol *pa)
     {
         return VERDADERO;
     }
-    int hIzq = alturaArbol(&(*pa)->izq);
-    int hDer = alturaArbol(&(*pa)->der);
+    int izq = alturaArbol(&(*pa)->izq);
+    int der = alturaArbol(&(*pa)->der);
 
 
-    if(abs(hIzq - hDer) > 1)
+    if(abs(izq - der) > 1)
     {
         return FALSO;
     }
     return esArbolAVL(&(*pa)->izq) && esArbolAVL(&(*pa)->der);
 
 }
+
+
+
+int insertarArchivoEnArbol(Arbol* arbol,FILE* archivo,size_t tamElem,Cmp cmp)  //esta es la que se llama del main
+{
+    fseek(archivo,0, SEEK_END);
+
+    int tamArchBytes=ftell(archivo);
+
+    int cantReg = tamArchBytes/tamElem;
+
+    int li=0;
+    int ls=cantReg-1;
+
+    cargarArbolArchivo(arbol,archivo,tamElem,cmp,li,ls);
+
+
+
+    return 1;
+}
+
+
+
+void cargarArbolArchivo(Arbol* arbol,FILE* archivo,size_t tamElem,Cmp cmp,int li,int ls)
+{
+    if(li>ls)
+        return;
+
+    int m=(li+ls)/2;
+
+    fseek(archivo,m*tamElem,SEEK_SET);
+
+    void* elem;
+    elem=malloc(tamElem);
+
+    fread(elem,tamElem,1,archivo);
+
+    insertarEnArbolArchivo(arbol,elem,tamElem,cmp);
+    cargarArbolArchivo(arbol,archivo,tamElem,cmp,li,m-1);
+    cargarArbolArchivo(arbol,archivo,tamElem,cmp,m+1,ls);
+}
+
+
+NodoA* crearNodoArchivo(const void* elem,size_t tamElem)
+{
+    NodoA* nue=(NodoA*)malloc(sizeof(NodoA));
+
+    if(!nue)
+    {
+        free(nue);
+        return NULL;
+    }
+
+    nue->elem=(void*)elem;
+    nue->tamElem=tamElem;
+    nue->izq=NULL;
+    nue->der=NULL;
+
+    return nue;
+}
+
+
+
+
+int insertarEnArbolArchivo(Arbol* arbol,const void* elem,size_t tamElem,Cmp cmp)
+{
+    if(!*arbol)
+    {
+        *arbol=crearNodoArchivo(elem,tamElem);
+
+        return !*arbol? 0:1;
+    }
+
+    int comparacion=cmp(elem,(*arbol)->elem);
+
+    if(comparacion==0)
+    {
+        return 2;
+    }
+
+    return insertarEnArbolArchivo(comparacion>0? &(*arbol)->der : &(*arbol)->izq,elem,tamElem,cmp);
+}
+
 
 

@@ -18,7 +18,7 @@ enum
 } eCODIGO;
 
 typedef int(*Cmp)(const void*,const void*);
-typedef void(*Accion)(void* elem, size_t tamElem, void* datosAccion);
+typedef void(*Accion)(void* elem, void* datosAccion);
 
 typedef struct sNodoD
 {
@@ -59,8 +59,8 @@ void VacialLista(Lista* pl);
 void ordenarLista(Lista* pl, Cmp cmp);
 void recorrerListaAccion(Lista* pl, Accion accion,void* datosAccion);
 
-int eliminarDeListaOrdDuplicados(Lista* pl, const void* elem,size_t tamElem);
-int eliminarDeListaDesordDuplicados(Lista* pl, const void* elem,size_t tamElem);
+int eliminarDeListaOrdDuplicados(Lista* pl, const void* elem,size_t tamElem,Cmp cmp);
+int eliminarDeListaDesordDuplicados(Lista* pl, const void* elem,size_t tamElem, Cmp cmp);
 
 
 //iter

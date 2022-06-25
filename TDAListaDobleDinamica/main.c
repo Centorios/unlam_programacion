@@ -239,12 +239,14 @@ int eliminarDeListaDesordenada(Lista *pl, void *elem, size_t tamElem, Cmp cmp)
 
 int buscarEnListaOrdenada(const Lista *pl, void *elem, size_t tamElem, Cmp cmp)
 {
+
 }
 
 int listaVacia(Lista *pl)
 {
     return *pl == NULL;
 }
+
 int listaLlena(Lista *pl, size_t tamElem)
 {
 
@@ -334,14 +336,90 @@ void recorrerListaAccion(Lista *pl, Accion accion, void *datosAccion)
     }
     while (act)
     {
-        accion(act->elem, datosAccion, datosAccion);
+        accion(act->elem,datosAccion);
         act = act->siguiente;
     }
 }
 
-int eliminarDeListaOrdDuplicados(Lista *pl, const void *elem, size_t tamElem)
+int eliminarDeListaOrdDuplicados(Lista *pl, const void *elem, size_t tamElem,Cmp cmp)
 {
+        NodoD* pa=*pl;
+    while(pa&&pa->anterior)
+    {
+        pa=pa->anterior;
+    }
+
+    while(pa)
+    {
+
+        void* elem = pa->elem;
+        pa=pa->siguiente;
+        while(pa&&cmp(elem,pa->elem)==0)
+        {
+            pa->anterior->siguiente=pa->siguiente;
+
+            if(pa->siguiente)
+                pa->siguiente->anterior=pa->anterior;
+
+            if(pa==*pl)
+            {
+                if(pa->siguiente)
+                    *pl=pa->siguiente;
+                else
+                    *pl=pa->anterior;
+            }
+
+            NodoD* auxiliar=pa;
+
+            pa=pa->siguiente;
+
+            free(auxiliar->elem);
+            free(auxiliar);
+
+        }
+    }
+    return 1;
 }
-int eliminarDeListaDesordDuplicados(Lista *pl, const void *elem, size_t tamElem)
+int eliminarDeListaDesordDuplicados(Lista *pl, const void *elem, size_t tamElem, Cmp cmp)
 {
+        NodoD* pa=*pl;
+    while(pa&&pa->anterior)
+    {
+        pa=pa->anterior;
+    }
+
+    while(pa)
+    {
+
+        void* elem = pa->elem;
+        NodoD* base=pa;
+        pa=pa->siguiente;
+        while(pa)
+        {
+            if(cmp(pa->elem,elem)==0)
+            {
+                pa->anterior->siguiente=pa->siguiente;
+
+                if(pa->siguiente)
+                    pa->siguiente->anterior=pa->anterior;
+                if(pa==*pl)
+                {
+                    if(pa->siguiente)
+                        *pl=pa->siguiente;
+                    else
+                        *pl=pa->anterior;
+                }
+                NodoD* nae=pa;
+
+                pa=pa->siguiente;
+
+                free(nae->elem);
+                free(nae);
+            }
+            else
+                pa=pa->siguiente;
+        }
+        pa=base->siguiente;
+    }
+    return 1;
 }

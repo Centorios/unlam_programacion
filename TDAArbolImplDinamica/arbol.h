@@ -53,4 +53,8 @@ void imprimirArbol(Arbol *pa, Imprimir accion, void *datosAccion);
 Arbol* buscarRaizArbol(const Arbol* pa,const void* elem,size_t tamElem,Cmp cmp);
 int eliminarDeArbol(Arbol* pa,void* elem,size_t tamElem,Cmp cmp);
 void eliminarRaizArbol(Arbol* pae);
+
+
+
+int insertarArchivoEnArbol(Arbol* arbol,FILE* archivo,size_t tamElem,Cmp cmp);
 #endif // ARBOL_H_INCLUDED
