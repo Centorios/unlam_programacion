@@ -39,7 +39,7 @@ int main()
     //eliminarDeArbol(&arbol,&arr[4],sizeof(int),&comparaInt);
     imprimirArbol(&arbol,imprimirEnteroArbol,NULL);
     vaciarArbol(&arbol);
-    imprimirArbol(&arbol,imprimirArbol,NULL);
+    imprimirArbol(&arbol,imprimirEnteroArbol,NULL);
     //int arbolCompleto = esArbolCompleto(&arbol);
     //int arbolAvl = esArbolAVL(&arbol);
     //int arbolBalanceado = esArbolBalanceado(&arbol);
