@@ -1,3 +1,5 @@
+import bombilla.Bombilla;
+
 public class Main {
     public static void main(String[] args) {
         Persona pepe = new Persona();
@@ -5,5 +7,7 @@ public class Main {
         pepe.getPersonaAtt();
         juan.getPersonaAtt();
         System.out.println(Persona.getContadorDePersonas());
+
+        Bombilla bombilla = new Bombilla();
     }
 }
