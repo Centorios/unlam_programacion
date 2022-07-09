@@ -1,0 +1,32 @@
+# depslib dependency file v1.0
+1656340788 source:c:\users\laboratorios.unlmlab\desktop\parical\2022-06-27_2doparcialpatentes\puntosyrectascpp\src\punto.cpp
+	"Punto.h"
+
+1656340777 c:\users\laboratorios.unlmlab\desktop\parical\2022-06-27_2doparcialpatentes\puntosyrectascpp\include\punto.h
+
+1656340698 source:c:\users\laboratorios.unlmlab\desktop\parical\2022-06-27_2doparcialpatentes\puntosyrectascpp\src\recta.cpp
+	"Recta.h"
+
+1656340697 c:\users\laboratorios.unlmlab\desktop\parical\2022-06-27_2doparcialpatentes\puntosyrectascpp\include\recta.h
+
+1657394080 source:c:\users\centorios\desktop\puntosyrectascpp\src\punto.cpp
+	"Punto.h"
+
+1657392528 c:\users\centorios\desktop\puntosyrectascpp\include\punto.h
+	<ostream>
+
+1657394276 source:c:\users\centorios\desktop\puntosyrectascpp\main.cpp
+	<iostream>
+	"Punto.h"
+	"Recta.h"
+
+1657394193 c:\users\centorios\desktop\puntosyrectascpp\include\recta.h
+	"Punto.h"
+	<ostream>
+
+1657394765 source:c:\users\centorios\desktop\puntosyrectascpp\src\recta.cpp
+	"Recta.h"
+	"Punto.h"
+	<stdlib.h>
+	<cmath>
+

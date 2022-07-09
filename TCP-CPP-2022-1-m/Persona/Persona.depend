@@ -1,0 +1,50 @@
+# depslib dependency file v1.0
+1656173118 source:c:\users\centorios\documents\github\programacionunlam\tcp-cpp-2022-1-m\persona\alumno.cpp
+	"Alumno.h"
+
+1656173118 c:\users\centorios\documents\github\programacionunlam\tcp-cpp-2022-1-m\persona\alumno.h
+	"Persona.h"
+
+1656173118 c:\users\centorios\documents\github\programacionunlam\tcp-cpp-2022-1-m\persona\persona.h
+	"../Cadena/Cadena.h"
+	"../Fecha/Fecha.h"
+
+1656173118 c:\users\centorios\documents\github\programacionunlam\tcp-cpp-2022-1-m\cadena\cadena.h
+	<vector>
+	<string>
+	"../Fecha/Fecha.h"
+
+1656173118 c:\users\centorios\documents\github\programacionunlam\tcp-cpp-2022-1-m\fecha\fecha.h
+	<iostream>
+	"FechaExc.h"
+
+1656173118 c:\users\centorios\documents\github\programacionunlam\tcp-cpp-2022-1-m\fecha\fechaexc.h
+	<string>
+
+1656173118 source:c:\users\centorios\documents\github\programacionunlam\tcp-cpp-2022-1-m\persona\alumnobuilder.cpp
+	"AlumnoBuilder.h"
+
+1656173118 c:\users\centorios\documents\github\programacionunlam\tcp-cpp-2022-1-m\persona\alumnobuilder.h
+	"Alumno.h"
+	"PersonaBuilder.h"
+
+1656173118 c:\users\centorios\documents\github\programacionunlam\tcp-cpp-2022-1-m\persona\personabuilder.h
+	"../Cadena/Cadena.h"
+	"../Fecha/Fecha.h"
+	"../Persona/Persona.h"
+
+1656173118 source:c:\users\centorios\documents\github\programacionunlam\tcp-cpp-2022-1-m\persona\persona.cpp
+	<vector>
+	"PersonaExc.h"
+	"Persona.h"
+
+1656173118 c:\users\centorios\documents\github\programacionunlam\tcp-cpp-2022-1-m\persona\personaexc.h
+	"../Cadena/Cadena.h"
+
+1656173118 source:c:\users\centorios\documents\github\programacionunlam\tcp-cpp-2022-1-m\persona\personabuilder.cpp
+	"PersonaExc.h"
+	"PersonaBuilder.h"
+
+1656173118 source:c:\users\centorios\documents\github\programacionunlam\tcp-cpp-2022-1-m\persona\personaexc.cpp
+	"PersonaExc.h"
+
