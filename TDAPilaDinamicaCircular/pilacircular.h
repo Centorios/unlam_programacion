@@ -20,7 +20,7 @@ typedef struct sNodo
 
 //en esta impl pila*pp apunta a la base
 
-typedef Nodo* PilaCircular;
+typedef Nodo* Pila;
 
 void crearPila(Pila* pp);
 int apilar(Pila* pp, const void* elemento, size_t tamElemento);

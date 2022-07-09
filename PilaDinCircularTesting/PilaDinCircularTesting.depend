@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1657397945 source:c:\users\centorios\documents\github\programacionunlam\piladincirculartesting\main.c
+	<stdio.h>
+	<stdlib.h>
+	"../TDAPilaDinamicaCircular/pilacircular.h"
+
+1657395853 c:\users\centorios\documents\github\programacionunlam\tdapiladinamicacircular\pilacircular.h
+	<stdlib.h>
+	<mem.h>
+
