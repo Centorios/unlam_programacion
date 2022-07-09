@@ -10,28 +10,6 @@
 #define min(a,b) (a < b ? (a) : (b))
 #define max(a,b) (a > b ? (a) : (b))
 
-/*
-int comparaInt(const void* a, const void* b)
-{
-    int* c = (int*)a;
-    int* d = (int*)b;
-    return *c - *d;
-
-}
-
-
-void imprimirEnteroArbol(void* elem,const void* dato,int nivel)
-{
-    int i;
-    for(i = 0; i < nivel;i++)
-    {
-        putchar('\t');
-    }
-    printf("%d\n",*(int*)elem);
-}
-*/
-
-
 typedef int (*Cmp)(const void *, const void *);
 typedef int (*Accion)(void *elem, void *datosAccion);
 typedef int(*Actualizar)(void* elem,const void* dato);
