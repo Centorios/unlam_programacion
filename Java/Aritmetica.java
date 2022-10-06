@@ -28,14 +28,13 @@ public class Aritmetica {
     {
         return a + b;
     }
-
-    /* 
+/*
     public static void main (String args[]) {
         Aritmetica a = new Aritmetica();
         System.out.println(a.suma(1, 2));
         Aritmetica b = new Aritmetica(4, 4);
         System.out.println(b.suma());
     }
-    */
-
+    
+*/
 }

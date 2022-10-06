@@ -85,6 +85,7 @@ int esBisiesto(const Fecha *fecha)
     }
 }
 
+
 int esBisiestoNoPointer(const int anio)
 {
     if ((anio % 4 == 0 && anio % 100 == 0) || anio % 400 == 0)
