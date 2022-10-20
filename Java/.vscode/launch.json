@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch PronosticoSemanal",
+            "request": "launch",
+            "mainClass": "PronosticoSemanal",
+            "projectName": "Java_cbcd61d"
+        },
+        {
+            "type": "java",
             "name": "Launch Aritmetica",
             "request": "launch",
             "mainClass": "Aritmetica",
