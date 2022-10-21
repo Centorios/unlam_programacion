@@ -1,12 +1,16 @@
-import pronosticos.DiasLluviosos;
+import mapa.Mapa;
+import mapa.Posicion;
 
 public class Main {
     public static void main(String args[]) {
-        DiasLluviosos carlos = new DiasLluviosos();
-        carlos.registrarQueLlovioElDia(7, true);
-        System.out.println("Llovio : " + carlos.consultarSiLlovioElDia(7));
-        System.out.println("Cantidad de dias que llovieron: " + carlos.contarDiasLluviosos());
-        System.out.println(carlos.consultarCuatrimestreMasLluvioso());
-        System.out.println(carlos.consultarPrimerDiaConLluvia());
+        
+
+        Mapa pepe = new Mapa(5, 5);
+        pepe.colocar(Mapa.Cosas.FRUTA, 0, 0);;
+        Posicion pos = pepe.buscarCosaMasLejana(Mapa.Cosas.FRUTA,3,3);
+
+        System.out.println(pos.x);
+        System.out.println(pos.y);
+
     }
 }

@@ -1,8 +1,6 @@
-from machine import Pin
+from machine import Pin,PWM
 from machine import Timer
 import time
-
-
 
 a = Pin(23, Pin.OUT)
 b = Pin(22, Pin.OUT)
@@ -71,9 +69,22 @@ def num9():
     e.off()
     
 numsArr = [num0,num1,num2,num3,num4,num5,num6,num7,num8,num9]
+pwm = PWM(Pin(25))
+
+
+
+        
+i=9
+
+
 while(True):
-    for i in range(10):
-        numsArr[i]()
-        time.sleep_ms(300)
+    pwm.init(freq=500, duty=256)
+    numsArr[i] ()
+    i-=1
+    time.sleep_ms(500)
+    pwm.deinit()
+    time.sleep_ms(500)
+    if i==-1:
+        i=9
 
 
