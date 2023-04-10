@@ -1,4 +1,4 @@
-package unlam.paradigmas.diagnostico;
+package edu.unlam.paradigmas;
 
 public class Ejercicio01 {
 

@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "dado",
+            "request": "launch",
+            "mainClass": "edu.unlam.paradigmas.dado",
+            "projectName": "Java_c4a140a3"
+        },
+        {
+            "type": "java",
             "name": "Launch PronosticoSemanal",
             "request": "launch",
             "mainClass": "PronosticoSemanal",

@@ -1,9 +1,9 @@
-package unlam.paradigmas.diagnostico;
+package edu.unlam.paradigmas;
 
 public class Ejercicio02 {
 
 	public static boolean resolver(int[][] m) {
-		// completar
+		// completa
 		return false;
 	}
 }
